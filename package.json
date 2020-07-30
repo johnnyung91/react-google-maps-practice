@@ -1,0 +1,126 @@
+{
+  "name": "template-repo",
+  "version": "1.0.0",
+  "description": "Template for new React projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm-run-all --silent --parallel dev:*",
+    "dev:client": "webpack-dev-server",
+    "dev:server": "nodemon server/index.js",
+    "build": "webpack --mode=production",
+    "start": "NODE_ENV=production node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnnyung91/template-repo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnnyung91/template-repo/issues"
+  },
+  "homepage": "https://github.com/johnnyung91/template-repo#readme",
+  "nodemonConfig": {
+    "watch": [
+      "server/"
+    ],
+    "ignore": [
+      "server/public/",
+      "server/sessions/"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "eslintIgnore": [
+    "server/public/main.js"
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "parser": "babel-eslint",
+    "extends": [
+      "plugin:react/recommended",
+      "eslint:recommended",
+      "standard"
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "rules": {
+      "semi": [
+        "error",
+        "always"
+      ],
+      "padded-blocks": 0,
+      "arrow-parens": [
+        "error",
+        "as-needed"
+      ],
+      "curly": [
+        "error",
+        "multi-line"
+      ],
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "always",
+          "named": "never",
+          "asyncArrow": "always"
+        }
+      ],
+      "react/prop-types": 0
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "7.10.3",
+    "@babel/plugin-proposal-class-properties": "7.10.1",
+    "@babel/plugin-transform-arrow-functions": "7.10.1",
+    "@babel/plugin-transform-react-jsx": "7.10.3",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.1.0",
+    "eslint": "7.3.0",
+    "eslint-config-standard": "14.1.1",
+    "eslint-plugin-import": "2.21.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.20.0",
+    "eslint-plugin-standard": "4.0.1",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.11",
+    "nodemon": "2.0.4",
+    "npm-run-all": "4.1.5",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  },
+  "dependencies": {
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
